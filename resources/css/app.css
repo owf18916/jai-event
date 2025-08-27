@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+.bg-size-200 {
+    background-size: 200% 200%;
+}
+
+@keyframes gradient-x {
+    0%, 100% {
+        background-position: left center;
+    }
+    50% {
+        background-position: right center;
+    }
+}
+
+.animate-gradient-x {
+    animation: gradient-x 4s ease infinite;
+}
+
+
+[x-cloak] {
+    display: none;
+}
