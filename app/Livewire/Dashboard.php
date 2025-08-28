@@ -38,7 +38,7 @@ class Dashboard extends Component
 
         $this->totalScan = Registration::whereNotNull('scanned_at')->where('event_id', $this->eventId)->count();
         
-        $this->totalEmployee = Registration::whereNotNull('scanned_at')->where('event_id', $this->eventId)->count();
+        $this->totalEmployee = Registration::where('event_id', $this->eventId)->count();
 
         $this->recentScans = Registration::with('employee')
             ->where('event_id', $this->eventId)
