@@ -5,20 +5,30 @@
             <h1 class="text-2xl font-bold mb-4">Gate Setting</h1>
             <form wire:submit.prevent="submit" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-medium mb-1">NIK Panitia</label>
-                    <input type="text" wire:model="employee_code" class="w-full border rounded p-2">
-                    @error('employee_code') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
+                    <label class="block text-sm font-medium mb-1">Event</label>
+                    <input type="text" value="{{ $event->name ?? '' }}" disabled class="w-full border rounded p-2 bg-gray-100">
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium mb-1">Event</label>
-                    <input type="text" value="{{ $event->name ?? '' }}" disabled class="w-full border rounded p-2 bg-gray-100">
+                    <label class="block text-sm font-medium mb-1">Lokasi</label>
+                    <input type="text" value="{{ $event->place ?? '' }}" disabled class="w-full border rounded p-2 bg-gray-100">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">Tanggal Acara</label>
+                    <input type="text" value="{{ \Carbon\Carbon::parse($event->date)->format('d F Y') ?? '' }}" disabled class="w-full border rounded p-2 bg-gray-100">
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium mb-1">Gate Number</label>
                     <input type="number" wire:model="gate_number" class="w-full border rounded p-2">
                     @error('gate_number') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-1">NIK Panitia</label>
+                    <input type="text" wire:model="employee_code" class="w-full border rounded p-2">
+                    @error('employee_code') <span class="text-red-500 text-sm">{{ $message }}</span>@enderror
                 </div>
 
                 <button type="submit"

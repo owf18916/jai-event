@@ -14,7 +14,7 @@ class EventSeeder extends Seeder
     public function run(): void
     {
         Event::create([
-            'name' => 'JAI 22th Anniversary',
+            'name' => 'JAI 22nd Anniversary',
             'date' => '2025-09-01',
             'place' => 'Jatim Park 1 - Batu',
             'passcode' => 'JAI@22'

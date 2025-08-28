@@ -33,6 +33,8 @@ class Scanner extends Component
         $this->validate(['nik' => 'required']);
 
         DB::transaction(function() {
+            $this->nik = ltrim($this->nik, '0');
+
             $this->registration = Registration::with('employee')->whereHas('employee', fn($q) => $q->where('employee_code', $this->nik))
                 ->where('event_id', $this->event->id)
                 ->lockForUpdate()

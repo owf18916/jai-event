@@ -28,8 +28,10 @@ class GateSetup extends Component
 
     public function submit()
     {
+        $this->employee_code = ltrim($this->employee_code, '0');
+
         $this->validate([
-            'employee_code' => 'required|exists:employees,employee_code',
+            'employee_code' => 'required||digits_between:1,6|exists:employees,employee_code',
             'gate_number'   => ['required','integer','min:1'],
         ]);
 

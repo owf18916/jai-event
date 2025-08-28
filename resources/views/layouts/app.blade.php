@@ -12,7 +12,14 @@
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
     <div class="w-full max-w-7xl mx-auto p-4">
         {{ $slot }}
+        
+        <div class="text-center text-sm text-gray-400 mt-6">
+            <div>
+                &copy; {{ now()->year }} Jatim Autocomp Indonesia.
+            </div>
+        </div>
     </div>
+
 
     @stack('scripts')
 
