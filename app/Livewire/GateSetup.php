@@ -16,6 +16,7 @@ class GateSetup extends Component
     public $employee_code;
     public $gate_number;
     public $event;
+    public $passcode;
 
     public function mount()
     {
@@ -33,6 +34,11 @@ class GateSetup extends Component
         $this->validate([
             'employee_code' => 'required||digits_between:1,6|exists:employees,employee_code',
             'gate_number'   => ['required','integer','min:1'],
+            'passcode' => ['required',function ($attribute, $value, $fail) {
+                if ($value !== $this->event->passcode) {
+                    $fail('passcode tidak cocok.');
+                }
+            }]
         ]);
 
         session([

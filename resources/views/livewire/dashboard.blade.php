@@ -26,7 +26,7 @@
         </div>
         <div class="bg-yellow-500 rounded-xl p-4 shadow-lg flex flex-col items-center transform hover:scale-105 transition">
             <p class="text-sm font-semibold">Rasio </p>
-            <h2 class="text-3xl font-extrabold">{{ $totalScan/$totalEmployee*100 }} %</h2>
+            <h2 class="text-3xl font-extrabold">{{ number_format($totalScan/$totalEmployee*100,0) }} %</h2>
         </div>
         <div class="bg-purple-600 rounded-xl p-4 shadow-lg flex flex-col items-center transform hover:scale-105 transition">
             <p class="text-sm font-semibold">Gate Aktif</p>
