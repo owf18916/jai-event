@@ -67,7 +67,7 @@
                 id="searchInput" 
                 wire:model="nik"
                 wire:keydown.enter="getRecentScans"
-                placeholder="Cari NIK..." 
+                placeholder="Cari NIK atau nama..." 
                 class="w-full md:w-1/3 p-2 border rounded-xl shadow-sm focus:ring focus:ring-indigo-300 focus:outline-none"
             >
         </div>

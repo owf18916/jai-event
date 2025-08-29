@@ -47,23 +47,13 @@ class Dashboard extends Component
     {
         $this->recentScans = Registration::with('employee')
             ->when(!empty($this->nik), function ($q) {
-                $q->whereHas('employee', fn ($q2) => $q2->where('employee_code','like',"%{$this->nik}%"));
+                $q->whereHas('employee', fn ($q2) => $q2->where('employee_code','like',"%{$this->nik}%")->orWhere('name','like',"%{$this->nik}%"));
             })
             ->where('event_id', $this->eventId)
             ->whereNotNull('scanned_at')
             ->latest('scanned_at')
             ->take(10)
             ->get();
-    }
-
-    #[On('search-by-nik')]
-    public function searchByNik()
-    {
-        $this->registration = Registration::with('employee')->whereHas('employee', fn ($q) => $q->where('employee_code', $this->nik))->first();
-
-        if (empty($this->registration)) {
-            return $this->flashError('NIK tidak terdaftar.');
-        }
     }
 
     #[Layout('layouts.app')]
