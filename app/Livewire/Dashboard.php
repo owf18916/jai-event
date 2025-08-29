@@ -40,7 +40,15 @@ class Dashboard extends Component
         
         $this->totalEmployee = Registration::where('event_id', $this->eventId)->count();
 
+        $this->getRecentScans();
+    }
+
+    public function getRecentScans()
+    {
         $this->recentScans = Registration::with('employee')
+            ->when(!empty($this->nik), function ($q) {
+                $q->whereHas('employee', fn ($q2) => $q2->where('employee_code','like',"%{$this->nik}%"));
+            })
             ->where('event_id', $this->eventId)
             ->whereNotNull('scanned_at')
             ->latest('scanned_at')
